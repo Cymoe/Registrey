@@ -144,7 +144,18 @@ export const modules: Module[] = [
       ...todo("sell", 6),
     ],
   },
-  { title: "Systemize: dispatch, quality, cash flow", owner: "mid", lessons: todo("systemize", 7) },
+  {
+    title: "Systemize: dispatch, quality, cash flow",
+    owner: "mid",
+    lessons: [
+      {
+        id: "collecting-payments-and-draws",
+        title: "Collecting Payments and Draws",
+        loom: "https://www.loom.com/share/5ac5dd28c11a44efa710e38497f1835a",
+      },
+      ...todo("systemize", 6),
+    ],
+  },
   {
     title: "Remove yourself: the operator handoff",
     owner: "mid",
