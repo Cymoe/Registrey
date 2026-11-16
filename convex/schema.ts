@@ -1,5 +1,4 @@
-// DRAFT funnel tables. Not deployed: the existing Convex project's schema is
-// unknown, so merge these into it (do not overwrite) once access works.
+// Funnel tables, deployed to the "Remote Ops" Convex project.
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 

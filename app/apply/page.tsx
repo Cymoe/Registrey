@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
-import { Shell, Checks, DraftNote } from "@/components/ui";
+import { Shell, Checks } from "@/components/ui";
+import { convex } from "@/lib/convex";
+import { api } from "@/convex/_generated/api";
 import { offers, usd } from "@/lib/funnel";
 
 const field = "mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2";
 
 export default function Apply() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
   const o = offers.high;
   if (sent)
     return (
@@ -26,18 +30,33 @@ export default function Apply() {
       <p className="mt-4 text-sm text-ink/60">Investment: {usd(o.price)}. By application only.</p>
       <form
         className="mt-8 space-y-4"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          setSent(true);
+          const f = new FormData(e.currentTarget);
+          setBusy(true);
+          setError("");
+          try {
+            await convex.mutation(api.applications.submit, {
+              email: String(f.get("email")),
+              capital: String(f.get("capital")),
+              hours: String(f.get("hours")),
+              plan: String(f.get("plan")),
+            });
+            setSent(true);
+          } catch {
+            setError("Something went wrong. Check your email address and try again.");
+          } finally {
+            setBusy(false);
+          }
         }}
       >
         <label className="block font-medium">
           Email
-          <input required type="email" className={field} />
+          <input required name="email" type="email" className={field} />
         </label>
         <label className="block font-medium">
           Startup capital available
-          <select required className={field} defaultValue="">
+          <select required name="capital" className={field} defaultValue="">
             <option value="" disabled>Select</option>
             <option>Under $10k</option>
             <option>$10k to $50k</option>
@@ -47,7 +66,7 @@ export default function Apply() {
         </label>
         <label className="block font-medium">
           Hours per week you can work in the business
-          <select required className={field} defaultValue="">
+          <select required name="hours" className={field} defaultValue="">
             <option value="" disabled>Select</option>
             <option>Under 10</option>
             <option>10 to 30</option>
@@ -56,13 +75,16 @@ export default function Apply() {
         </label>
         <label className="block font-medium">
           Which trade and market are you considering, and why?
-          <textarea required rows={4} className={field} />
+          <textarea required name="plan" rows={4} maxLength={5000} className={field} />
         </label>
-        <button className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-dark">
-          Submit application
+        {error && <p className="text-sm text-red-700">{error}</p>}
+        <button
+          disabled={busy}
+          className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-dark disabled:opacity-60"
+        >
+          {busy ? "Sending…" : "Submit application"}
         </button>
       </form>
-      <DraftNote>applications are not saved or emailed yet.</DraftNote>
     </Shell>
   );
 }
