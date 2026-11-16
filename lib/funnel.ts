@@ -156,13 +156,33 @@ export const modules: Module[] = [
     ],
   },
   {
-    title: "Systemize: dispatch, quality, cash flow",
+    title: "Materials: order remotely, subs pick up",
     owner: "mid",
     lessons: [
       {
-        id: "collecting-payments-and-draws",
-        title: "Collecting Payments and Draws",
-        loom: "https://www.loom.com/share/5ac5dd28c11a44efa710e38497f1835a",
+        id: "material-ordering-procedure",
+        title: "Material Ordering Procedure",
+        loom: "https://www.loom.com/share/3d3131e7711a4665901648bd2541de03",
+      },
+      {
+        id: "material-ordering-process-sop",
+        title: "Material Ordering Process SOP",
+        loom: "https://www.loom.com/share/b45a5aeb54ce43ba9bbfc00416038572",
+      },
+      {
+        id: "streamlining-material-ordering-live",
+        title: "Streamlining Material Ordering (Live Walkthrough)",
+        loom: "https://www.loom.com/share/1d61b09fd553498ba402bfffae4bf3ad",
+      },
+      {
+        id: "material-ordering-recap",
+        title: "Material Ordering Recap",
+        loom: "https://www.loom.com/share/a95c6589a24e45daa133f5f37de42580",
+      },
+      {
+        id: "home-depot-app-sop",
+        title: "Home Depot App SOP",
+        loom: "https://www.loom.com/share/182d214df3514f2ebe45f9fed632cbfc",
       },
       {
         id: "sending-material-orders-to-subs",
@@ -179,7 +199,18 @@ export const modules: Module[] = [
         title: "Ordering Last-Minute Project Materials",
         loom: "https://www.loom.com/share/251275edb7dc4c068da340c850075cac",
       },
-      ...todo("systemize", 3),
+    ],
+  },
+  {
+    title: "Systemize: dispatch, quality, cash flow",
+    owner: "mid",
+    lessons: [
+      {
+        id: "collecting-payments-and-draws",
+        title: "Collecting Payments and Draws",
+        loom: "https://www.loom.com/share/5ac5dd28c11a44efa710e38497f1835a",
+      },
+      ...todo("systemize", 5),
     ],
   },
   {
