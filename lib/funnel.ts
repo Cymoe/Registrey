@@ -108,7 +108,18 @@ export const modules: Module[] = [
     ],
   },
   { title: "Capital path vs Boots path", owner: "low", lessons: todo("paths", 3) },
-  { title: "Choosing your trade and market", owner: "low", lessons: todo("choose", 5) },
+  {
+    title: "Choosing your trade and market",
+    owner: "low",
+    lessons: [
+      {
+        id: "exterior-design-and-services-showcase",
+        title: "Exterior Design and Services Showcase",
+        loom: "https://www.loom.com/share/16197bf798e649819cc9ac94654fb00e",
+      },
+      ...todo("choose", 4),
+    ],
+  },
   { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
   { title: "Launch: licensing, insurance, first crew", owner: "mid", lessons: todo("launch", 8) },
   {
