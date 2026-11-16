@@ -153,7 +153,12 @@ export const modules: Module[] = [
         title: "Collecting Payments and Draws",
         loom: "https://www.loom.com/share/5ac5dd28c11a44efa710e38497f1835a",
       },
-      ...todo("systemize", 6),
+      {
+        id: "sending-material-orders-to-subs",
+        title: "Sending Material Orders to Subs",
+        loom: "https://www.loom.com/share/d3aae55e32824377b4459741e1b40ef9",
+      },
+      ...todo("systemize", 5),
     ],
   },
   {
