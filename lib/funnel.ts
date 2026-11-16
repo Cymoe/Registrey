@@ -84,17 +84,44 @@ export const offers = {
   },
 } satisfies Record<string, Offer>;
 
-// Course area: what the low-ticket buyer sees. Locked modules belong to the
-// mid-ticket system and act as the in-course upsell.
-export const modules: { title: string; owner: "low" | "mid"; lessons: number }[] = [
-  { title: "Why trades, why now", owner: "low", lessons: 4 },
-  { title: "Capital path vs Boots path", owner: "low", lessons: 3 },
-  { title: "Choosing your trade and market", owner: "low", lessons: 5 },
-  { title: "Your startup cost worksheet", owner: "low", lessons: 2 },
-  { title: "Launch: licensing, insurance, first crew", owner: "mid", lessons: 8 },
-  { title: "Sell: leads, estimating, high-ticket projects", owner: "mid", lessons: 9 },
-  { title: "Systemize: dispatch, quality, cash flow", owner: "mid", lessons: 7 },
-  { title: "Remove yourself: the operator handoff", owner: "mid", lessons: 6 },
+// Course area. Blueprint modules ("low") are open to every buyer. System
+// modules ("mid") are locked and act as the in-course upsell, except lessons
+// marked preview. To add a video, paste its Loom share link or ID into `loom`.
+export type Lesson = { id: string; title: string; loom?: string; preview?: boolean };
+export type Module = { title: string; owner: "low" | "mid"; lessons: Lesson[] };
+
+// Placeholder lessons until the real titles and videos are in.
+const todo = (slug: string, n: number): Lesson[] =>
+  Array.from({ length: n }, (_, i) => ({ id: `${slug}-${i + 1}`, title: `Lesson ${i + 1}` }));
+
+export const modules: Module[] = [
+  { title: "Why trades, why now", owner: "low", lessons: todo("why", 4) },
+  { title: "Capital path vs Boots path", owner: "low", lessons: todo("paths", 3) },
+  { title: "Choosing your trade and market", owner: "low", lessons: todo("choose", 5) },
+  { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
+  { title: "Launch: licensing, insurance, first crew", owner: "mid", lessons: todo("launch", 8) },
+  { title: "Sell: leads, estimating, high-ticket projects", owner: "mid", lessons: todo("sell", 9) },
+  { title: "Systemize: dispatch, quality, cash flow", owner: "mid", lessons: todo("systemize", 7) },
+  {
+    title: "Remove yourself: the operator handoff",
+    owner: "mid",
+    lessons: [
+      {
+        id: "doing-less-by-delegation",
+        title: "Doing Less by Delegation",
+        loom: "https://www.loom.com/share/70593fa3aba945a29e5b3f6ef4c90af0",
+        preview: true,
+      },
+      ...todo("remove", 5),
+    ],
+  },
 ];
+
+export const allLessons = modules.flatMap((m) =>
+  m.lessons.map((l) => ({ ...l, module: m, locked: m.owner === "mid" && !l.preview })),
+);
+
+// Accepts a Loom share/embed URL or a bare video ID.
+export const loomId = (v: string) => v.match(/[0-9a-f]{32}/)?.[0] ?? v;
 
 export const usd = (n: number) => `$${n.toLocaleString("en-US")}`;

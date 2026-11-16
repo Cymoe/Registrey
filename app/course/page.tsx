@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Shell, Cta, DraftNote } from "@/components/ui";
 import { modules, offers, usd } from "@/lib/funnel";
 
@@ -5,21 +6,35 @@ export default function Course() {
   return (
     <Shell>
       <h1 className="text-3xl font-bold">Your course</h1>
-      <ol className="mt-6 space-y-3">
+      <ol className="mt-6 space-y-4">
         {modules.map((m, i) => {
           const locked = m.owner === "mid";
           return (
-            <li
-              key={m.title}
-              className={`flex items-center justify-between rounded-xl border p-4 ${
-                locked ? "border-ink/10 bg-ink/5 text-ink/60" : "border-ink/10 bg-white"
-              }`}
-            >
-              <span>
+            <li key={m.title} className="rounded-xl border border-ink/10 bg-white p-4">
+              <div className="flex items-center justify-between">
                 <span className="font-semibold">{i + 1}. {m.title}</span>
-                <span className="block text-sm">{m.lessons} lessons</span>
-              </span>
-              <span className="text-sm font-medium">{locked ? "🔒 Full system" : "Open"}</span>
+                {locked && <span className="text-sm text-ink/60">🔒 Full system</span>}
+              </div>
+              <ul className="mt-2 space-y-1 text-sm">
+                {m.lessons.map((l) => {
+                  const open = !locked || l.preview;
+                  return (
+                    <li key={l.id}>
+                      <Link
+                        href={`/course/${l.id}`}
+                        className={open ? "hover:underline" : "text-ink/45"}
+                      >
+                        {open ? "▶" : "🔒"} {l.title}
+                        {l.preview && (
+                          <span className="ml-2 rounded bg-accent/15 px-1.5 py-0.5 text-xs font-semibold text-accent-dark">
+                            Free preview
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
           );
         })}
@@ -32,9 +47,7 @@ export default function Course() {
         </p>
         <div className="mt-4"><Cta href="/checkout">Unlock the full system</Cta></div>
       </div>
-      <DraftNote>
-        login, your real videos from Convex, progress tracking and the upgrade checkout.
-      </DraftNote>
+      <DraftNote>login, progress tracking and the real upgrade checkout.</DraftNote>
     </Shell>
   );
 }
