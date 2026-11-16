@@ -100,7 +100,18 @@ export const modules: Module[] = [
   { title: "Choosing your trade and market", owner: "low", lessons: todo("choose", 5) },
   { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
   { title: "Launch: licensing, insurance, first crew", owner: "mid", lessons: todo("launch", 8) },
-  { title: "Sell: leads, estimating, high-ticket projects", owner: "mid", lessons: todo("sell", 9) },
+  {
+    title: "Sell: leads, estimating, high-ticket projects",
+    owner: "mid",
+    lessons: [
+      {
+        id: "building-a-successful-business-strategy",
+        title: "Building a Successful Business Strategy",
+        loom: "https://www.loom.com/share/558abe0d750649fd8d35ea2a5db82503",
+      },
+      ...todo("sell", 8),
+    ],
+  },
   { title: "Systemize: dispatch, quality, cash flow", owner: "mid", lessons: todo("systemize", 7) },
   {
     title: "Remove yourself: the operator handoff",
