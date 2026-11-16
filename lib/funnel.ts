@@ -132,11 +132,16 @@ export const modules: Module[] = [
         loom: "https://www.loom.com/share/558abe0d750649fd8d35ea2a5db82503",
       },
       {
+        id: "automated-estimating-interior",
+        title: "Automated Estimating (Interior)",
+        loom: "https://www.loom.com/share/2aacab951e8d424eb804be6883614fed",
+      },
+      {
         id: "sending-your-estimate-for-approval",
         title: "Sending Your Estimate for Approval",
         loom: "https://www.loom.com/share/0d490027aecb40768526e5d65dfe2e8e",
       },
-      ...todo("sell", 7),
+      ...todo("sell", 6),
     ],
   },
   { title: "Systemize: dispatch, quality, cash flow", owner: "mid", lessons: todo("systemize", 7) },
