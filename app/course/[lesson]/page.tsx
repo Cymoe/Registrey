@@ -24,7 +24,7 @@ export default async function LessonPage(props: PageProps<"/course/[lesson]">) {
       {lesson.locked ? (
         <div className="mt-6 rounded-xl border-2 border-accent bg-white p-5">
           <p className="font-semibold">This lesson is part of {offers.mid.name}.</p>
-          <div className="mt-4"><Cta href="/checkout">Unlock the full system</Cta></div>
+          <div className="mt-4"><Cta href="/system">Unlock the full system</Cta></div>
         </div>
       ) : lesson.loom ? (
         <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-xl bg-ink">
@@ -47,7 +47,7 @@ export default async function LessonPage(props: PageProps<"/course/[lesson]">) {
             Free preview from {offers.mid.name}. The rest of this module shows you how to
             hand the business to an operator.
           </p>
-          <div className="mt-4"><Cta href="/checkout">Unlock the full system</Cta></div>
+          <div className="mt-4"><Cta href="/system">Unlock the full system</Cta></div>
         </div>
       )}
 

@@ -51,7 +51,7 @@ export default function Course() {
         <p className="mt-2 text-sm text-ink/60">
           {usd(offers.mid.price)}, less what you&apos;ve already paid for the Blueprint.
         </p>
-        <div className="mt-4"><Cta href="/checkout">Unlock the full system</Cta></div>
+        <div className="mt-4"><Cta href="/system">Unlock the full system</Cta></div>
       </div>
       <DraftNote>login, progress tracking and the real upgrade checkout.</DraftNote>
     </Shell>
