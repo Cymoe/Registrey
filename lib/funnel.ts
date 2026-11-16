@@ -95,7 +95,18 @@ const todo = (slug: string, n: number): Lesson[] =>
   Array.from({ length: n }, (_, i) => ({ id: `${slug}-${i + 1}`, title: `Lesson ${i + 1}` }));
 
 export const modules: Module[] = [
-  { title: "Why trades, why now", owner: "low", lessons: todo("why", 4) },
+  {
+    title: "Why trades, why now",
+    owner: "low",
+    lessons: [
+      ...todo("why", 3),
+      {
+        id: "be-resourceful",
+        title: "Be Resourceful",
+        loom: "https://www.loom.com/share/3958104a5d804d0f893f6b743fbb2f44",
+      },
+    ],
+  },
   { title: "Capital path vs Boots path", owner: "low", lessons: todo("paths", 3) },
   { title: "Choosing your trade and market", owner: "low", lessons: todo("choose", 5) },
   { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
