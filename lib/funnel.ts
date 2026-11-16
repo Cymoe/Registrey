@@ -121,7 +121,18 @@ export const modules: Module[] = [
     ],
   },
   { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
-  { title: "Launch: licensing, insurance, first crew", owner: "mid", lessons: todo("launch", 8) },
+  {
+    title: "Launch: licensing, insurance, first crew",
+    owner: "mid",
+    lessons: [
+      {
+        id: "vendor-account-management-guide",
+        title: "Vendor Account Management Guide",
+        loom: "https://www.loom.com/share/707544364a1440b3b5ff1335a2164f70",
+      },
+      ...todo("launch", 7),
+    ],
+  },
   {
     title: "Sell: leads, estimating, high-ticket projects",
     owner: "mid",
@@ -158,7 +169,17 @@ export const modules: Module[] = [
         title: "Sending Material Orders to Subs",
         loom: "https://www.loom.com/share/d3aae55e32824377b4459741e1b40ef9",
       },
-      ...todo("systemize", 5),
+      {
+        id: "custom-color-matching-remote",
+        title: "Custom Color Matching (Remote)",
+        loom: "https://www.loom.com/share/d88f93f7702542b19d5697cf43e1ee4c",
+      },
+      {
+        id: "ordering-last-minute-project-materials",
+        title: "Ordering Last-Minute Project Materials",
+        loom: "https://www.loom.com/share/251275edb7dc4c068da340c850075cac",
+      },
+      ...todo("systemize", 3),
     ],
   },
   {
