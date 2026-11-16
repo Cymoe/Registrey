@@ -112,7 +112,12 @@ export const modules: Module[] = [
         loom: "https://www.loom.com/share/70593fa3aba945a29e5b3f6ef4c90af0",
         preview: true,
       },
-      ...todo("remove", 5),
+      {
+        id: "power-of-decision-making",
+        title: "The Power of Decision Making",
+        loom: "https://www.loom.com/share/5097dbc601a745909df6c6d850e6d2cc",
+      },
+      ...todo("remove", 4),
     ],
   },
 ];
