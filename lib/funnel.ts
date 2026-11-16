@@ -233,8 +233,15 @@ export const modules: Module[] = [
   },
 ];
 
+// TEMPORARY: true opens every lesson so the whole course can be reviewed.
+// Set back to false before launch, or buyers get the system for free.
+export const unlockAll = true;
+
+export const isLocked = (m: Module, l: Lesson) =>
+  !unlockAll && m.owner === "mid" && !l.preview;
+
 export const allLessons = modules.flatMap((m) =>
-  m.lessons.map((l) => ({ ...l, module: m, locked: m.owner === "mid" && !l.preview })),
+  m.lessons.map((l) => ({ ...l, module: m, locked: isLocked(m, l) })),
 );
 
 // Accepts a Loom share/embed URL or a bare video ID.

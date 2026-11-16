@@ -1,14 +1,20 @@
 import Link from "next/link";
 import { Shell, Cta, DraftNote } from "@/components/ui";
-import { modules, offers, usd } from "@/lib/funnel";
+import { isLocked, modules, offers, unlockAll, usd } from "@/lib/funnel";
 
 export default function Course() {
   return (
     <Shell>
       <h1 className="text-3xl font-bold">Your course</h1>
+      {unlockAll && (
+        <p className="mt-3 rounded bg-yellow-100 px-3 py-2 text-sm text-yellow-900">
+          Review mode: every lesson is unlocked. Turn off <code>unlockAll</code> in
+          lib/funnel.ts before launch.
+        </p>
+      )}
       <ol className="mt-6 space-y-4">
         {modules.map((m, i) => {
-          const locked = m.owner === "mid";
+          const locked = m.owner === "mid" && !unlockAll;
           return (
             <li key={m.title} className="rounded-xl border border-ink/10 bg-white p-4">
               <div className="flex items-center justify-between">
@@ -17,7 +23,7 @@ export default function Course() {
               </div>
               <ul className="mt-2 space-y-1 text-sm">
                 {m.lessons.map((l) => {
-                  const open = !locked || l.preview;
+                  const open = !isLocked(m, l);
                   return (
                     <li key={l.id}>
                       <Link
