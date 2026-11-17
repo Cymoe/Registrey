@@ -28,7 +28,7 @@ export default function System() {
         Run the job from your phone. Your crew handles the site.
       </h1>
       <p className="mt-5 text-lg text-ink/80">
-        The Blueprint showed you which trade and which path. The System is how the
+        The Blueprint made you an operator with a plan. The System is how the
         business actually runs once jobs come in: estimating, closing, getting paid,
         and getting materials to the crew without you driving to the store.
       </p>

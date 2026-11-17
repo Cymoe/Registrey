@@ -3,7 +3,7 @@
 
 export const brand = {
   name: "Location-Free Trades", // placeholder brand name
-  promise: "Own an essential trades business you can run from anywhere.",
+  promise: "Home services don't need more tradesmen. They need operators.",
 };
 
 export type Offer = {
@@ -19,16 +19,16 @@ export const offers = {
   low: {
     id: "blueprint",
     tier: "low",
-    name: "The Location-Free Trades Blueprint",
+    name: "The Operator Blueprint",
     price: 37,
     tagline:
-      "Pick your trade, your market and your path, and know what it will really cost, in one weekend.",
+      "Pick your trade, your market and your path, plan how you'll book the first jobs, and know what it will really cost.",
     includes: [
-      "Why essential trades are the AI-proof alternative to another corporate decade",
+      "Why home services need operators, not more tradesmen, and why your corporate skills are the edge",
       "The two honest entry paths: Capital or Boots on the Ground",
-      "Trade selection scorecard: demand, licensing, ticket size, remote-readiness",
-      "Startup cost worksheet for your trade and market",
-      "The stages from first job to running it from anywhere",
+      "Which services to sell: demand, ticket size and how easily they run remotely",
+      "Your first jobs: the marketing and follow-up that gets the phone ringing",
+      "What it really costs to start in your trade and market",
     ],
   },
   bump: {
@@ -96,7 +96,7 @@ const todo = (slug: string, n: number): Lesson[] =>
 
 export const modules: Module[] = [
   {
-    title: "Why trades, why now",
+    title: "Operators, not tradesmen",
     owner: "low",
     lessons: [
       ...todo("why", 3),
@@ -120,7 +120,8 @@ export const modules: Module[] = [
       ...todo("choose", 4),
     ],
   },
-  { title: "Your startup cost worksheet", owner: "low", lessons: todo("costs", 2) },
+  { title: "Your first jobs: marketing that books", owner: "low", lessons: todo("first-jobs", 4) },
+  { title: "What it really costs to start", owner: "low", lessons: todo("costs", 2) },
   {
     title: "Launch: licensing, insurance, first crew",
     owner: "mid",

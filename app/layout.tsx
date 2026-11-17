@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Location-Free Trades",
-  description: "Own an essential trades business you can run from anywhere.",
+  description: "Home services don't need more tradesmen. They need operators.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
