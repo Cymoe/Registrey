@@ -11,12 +11,23 @@ export default function Home() {
       <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight text-balance sm:text-5xl">
         Home services don&apos;t need more tradesmen. They need operators.
       </h1>
-      <p className="mt-5 text-lg text-ink/80">
+      <p className="mt-5 text-xl font-semibold">
+        Be the broker. You handle the sales. Your crews do the work.
+      </p>
+      <p className="mt-3 text-lg text-ink/80">
         You don&apos;t have to swing a hammer. Your subs bring the skills. You bring the
         marketing, the systems and the hustle that most trades companies never have.
         That&apos;s what lets the business grow, and it&apos;s what lets you run it from
         anywhere.
       </p>
+      <div className="relative mt-8 aspect-video w-full max-w-full overflow-hidden rounded-xl bg-ink shadow-lg">
+        <iframe
+          src="https://www.loom.com/embed/c954a298a53c45dfb558460b77a79552?hideEmbedTopBar=true"
+          title="Remote Ops: the opportunity in 6 minutes"
+          allowFullScreen
+          className="absolute inset-0 size-full"
+        />
+      </div>
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <Cta href="/checkout">Get the Operator Blueprint for {usd(o.price)}</Cta>
         <a href="/quiz" className="font-medium underline underline-offset-4">
